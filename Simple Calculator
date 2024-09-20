@@ -1,0 +1,88 @@
+import java.util.Scanner;
+class SimpleCalculator{
+public static double add(double a, double b) {
+        return a + b;
+    }
+public static double sub(double a, double b) {
+        return a - b;
+    }
+public static double mul(double a, double b) {
+        return a * b;
+    }
+public static double div(double a, double b)throws ArithmeticException {
+         if(b==0){
+                  throw new ArithmeticException("cannot divided by 0");
+        }
+        return a / b;
+    }
+public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double num1, num2, result = 0;
+        char operator;
+        boolean validOperation = true;
+
+        System.out.println("Welcome to the Basic Calculator!");
+
+        try {
+            // Take the first number as input
+            System.out.print("Enter the first number: ");
+            num1 = scanner.nextDouble();
+
+            // Take the operator as input
+            System.out.print("Enter the operator (+, -, *, /): ");
+            operator = scanner.next().charAt(0);
+
+            System.out.print("Enter the second number: ");
+            num2 = scanner.nextDouble();
+
+            // Perform the operation based on the operator
+            switch (operator) {
+                case '+':
+                    result = add(num1, num2);
+                    break;
+                case '-':
+                    result = subtract(num1, num2);
+                    break;
+                case '*':
+                    result = multiply(num1, num2);
+                    break;
+                case '/':
+                    result = divide(num1, num2);
+                    break;
+                default:
+                    System.out.println("Invalid operator!");
+                    validOperation = false;
+                    break;
+            }
+
+            // Display the result if the operation is valid
+            if (validOperation) {
+                System.out.println("The result of " + num1 + " " + operator + " " + num2 + " = " + result);
+            }
+
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+        } finally {
+            scanner.close();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
